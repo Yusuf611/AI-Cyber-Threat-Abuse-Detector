@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 from scripts.url_features import extract_url_features
 from scripts.xai_url import explain_url
 from scripts.xai_text import top_text_tokens
-from scripts.db_logger import log_scan, fetch_logs
 from scripts.ip_reputation import check_ip_reputation
 
 
