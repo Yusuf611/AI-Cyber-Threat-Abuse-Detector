@@ -1,3 +1,3 @@
 """
-Scripts package for AI Cyber Guard.
+Scripts package for the project.
 """

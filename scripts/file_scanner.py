@@ -2,7 +2,7 @@
 import json
 import os
 
-# Path to local malware hash database (same folder as this script)
+
 DB_PATH = os.path.join(os.path.dirname(__file__), "malware_db.json")
 
 def load_malware_db():
@@ -32,6 +32,6 @@ def scan_file(file_path):
     malware_db = load_malware_db()
 
     if file_hash in malware_db:
-        return True, malware_db[file_hash]  # (is_malware, malware_name)
+        return True, malware_db[file_hash]  
     else:
         return False, "Unknown File (Not in database)"

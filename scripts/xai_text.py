@@ -6,20 +6,20 @@ def top_text_tokens(tfidf, model, text, top_n=8):
     Works best with linear models like Logistic Regression.
     """
     try:
-        # Transform the text input using TF-IDF
+        
         X = tfidf.transform([text])
         features = tfidf.get_feature_names_out()
 
-        # Get model coefficients (feature weights)
+        
         if hasattr(model, "coef_"):
             weights = model.coef_[0]
         else:
             return [("Model does not support feature importance", 0)]
 
-        # Multiply each word's TF-IDF score by its model weight
+        
         scores = X.toarray()[0] * weights
 
-        # Sort by highest influence
+        
         idx = np.argsort(scores)[::-1][:top_n]
         results = [(features[i], float(scores[i])) for i in idx if scores[i] != 0]
 

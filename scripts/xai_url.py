@@ -5,18 +5,16 @@ import joblib
 import pandas as pd
 import numpy as np
 
-# Dynamically add ai_cyber_guard root folder to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, os.pardir))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-# Now import your feature extractor safely
 from scripts.url_features import extract_url_features
 
-# -------------------------------
+
 # Load the trained URL model
-# -------------------------------
+
 model_path = os.path.join(project_root, 'models', 'url_model.joblib')
 
 try:
@@ -26,9 +24,9 @@ except Exception as e:
     print(f"[ERROR] Error loading model: {e}")
     model = None
 
-# -------------------------------
+
 # Initialize SHAP explainer safely
-# -------------------------------
+
 explainer = None
 if model is not None:
     try:
@@ -42,9 +40,9 @@ if model is not None:
         explainer = None
 
 
-# -------------------------------
+
 # Main explanation function
-# -------------------------------
+
 def explain_url(url):
     """Return top 8 most influential features for a given URL."""
     if model is None or explainer is None:
